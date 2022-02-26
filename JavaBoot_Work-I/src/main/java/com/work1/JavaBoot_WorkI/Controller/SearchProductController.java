@@ -36,4 +36,12 @@ public class SearchProductController {
         return ResponseEntity.ok(productList);
     }
 
+    @GetMapping("/productbypid/{productId}")
+    public ResponseEntity<ProductResponse> getProductByProductId(@PathVariable int productId){
+        System.out.println(productId);
+        Optional<Product> result = productService.getProductByProductId(productId);
+        ProductResponse product = new ProductResponse(result.orElseThrow());
+        return ResponseEntity.ok(product);
+    }
+
 }

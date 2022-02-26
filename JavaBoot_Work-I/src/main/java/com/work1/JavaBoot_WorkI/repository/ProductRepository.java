@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     Optional<Product> findById(String id);
 
-    Optional<Product> findByproductId(String productId);
+    Optional<Product> findByproductId(int productId);
 
     Optional<Product> findByproductName(String productName);
 

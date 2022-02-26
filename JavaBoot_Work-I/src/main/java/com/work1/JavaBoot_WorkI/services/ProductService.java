@@ -15,6 +15,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    public ProductRepository getProductRepository() {
+        return productRepository;
+    }
+
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     public Optional<Product> getProductByName(String productName) {
         Optional<Product> result = productRepository.findByproductName(productName);
         if (result.isEmpty()) {
@@ -27,6 +35,14 @@ public class ProductService {
         Optional<List<Product>> result = productRepository.findByproductNameContains(productName);
         if (result.isEmpty() || result.get().isEmpty()) {
             throw new ProductNotFoundException(productName);
+        }
+        return result;
+    }
+
+    public Optional<Product> getProductByProductId(int productId){
+        Optional<Product> result = productRepository.findByproductId(productId);
+        if (result.isEmpty()) {
+            throw new ProductNotFoundException(String.valueOf(productId));
         }
         return result;
     }

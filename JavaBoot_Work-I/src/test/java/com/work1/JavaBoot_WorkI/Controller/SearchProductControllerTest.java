@@ -76,4 +76,25 @@ class SearchProductControllerTest {
         ErrorMessageResponse result = testRestTemplate.getForObject("/productlikename/มะม่วง", ErrorMessageResponse.class);
         assertEquals("ไม่พบสินค้า มะม่วง", result.getErrorMessage());
     }
+
+    @Test
+    @DisplayName("SuccessCase findByProductByProductId ,ProductId = 12223, Result = result.getProductName() == ยาหม่อง")
+    void successProductByProductId() {
+        //จำลอง Arrange
+        Product product = new Product();
+        product.setId(1);
+        product.setProductName("ยาหม่อง");
+        product.setProductId(12223);
+        when(productRepository.findByproductId(12223)).thenReturn(Optional.of(product));
+        //Act
+        ProductResponse result = testRestTemplate.getForObject("/productbypid/12223", ProductResponse.class);
+        //Verify
+        assertEquals("ยาหม่อง", result.getProductName());
+    }
+    @Test
+    @DisplayName("FailedCase findByProductByProductId,ProductId = 12223, Result = ไม่พบสินค้า 12223")
+    void failedProductByProductId() {
+        ErrorMessageResponse result = testRestTemplate.getForObject("/productbypid/12223", ErrorMessageResponse.class);
+        assertEquals("ไม่พบสินค้า 12223", result.getErrorMessage());
+    }
 }
