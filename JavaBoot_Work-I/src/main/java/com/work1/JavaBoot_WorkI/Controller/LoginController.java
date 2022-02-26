@@ -1,4 +1,4 @@
-package com.work1.JavaBoot_WorkI.login;
+package com.work1.JavaBoot_WorkI.Controller;
 
 import com.work1.JavaBoot_WorkI.response.UserResposnse;
 import com.work1.JavaBoot_WorkI.services.UserService;
