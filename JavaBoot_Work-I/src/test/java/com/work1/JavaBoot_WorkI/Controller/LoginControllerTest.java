@@ -2,6 +2,7 @@ package com.work1.JavaBoot_WorkI.Controller;
 
 import com.work1.JavaBoot_WorkI.entity.User;
 import com.work1.JavaBoot_WorkI.repository.UserRepository;
+import com.work1.JavaBoot_WorkI.response.ErrorMessageResponse;
 import com.work1.JavaBoot_WorkI.response.UserResposnse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ class LoginControllerTest {
     @Test
     @DisplayName("FailedCase,Send UserName = xxx3s21, Result = ไม่พบ UserName [xxx3s21] นี้ในระบบ กรุณาทำการสมัครด้วย")
     void sayhi2() {
-        UserResposnse result = testRestTemplate.getForObject("/login/xxx3s21", UserResposnse.class);
-        assertEquals("ไม่พบ UserName [xxx3s21] นี้ในระบบ กรุณาทำการสมัครด้วย", result.getLoginMessage());
+        ErrorMessageResponse result = testRestTemplate.getForObject("/login/xxx3s21", ErrorMessageResponse.class);
+        assertEquals("ไม่พบ UserName [xxx3s21] นี้ในระบบ กรุณาทำการสมัครด้วย", result.getErrorMessage());
     }
 }
