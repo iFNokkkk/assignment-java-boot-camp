@@ -37,4 +37,14 @@
 10. Summary Detail (API LOAD) 
     - Show data table: Orders
 
-
+====================
+### How to Test
+1. เช็ค User Login จาก 
+   1. http://localhost:8080/login/aabbccss จะแสดง MSG "loginMessage": "ยินดีต้อนรันคุณ ธนลภย์ ได้ทรัพย์"
+2. ทำการค้นหาสินค้า จาก
+   1. http://localhost:8080/productlikename/adidas จะพบสินค้าอยู่ 3 รายการ
+      1. productId = 100003
+      2. productId = 100005
+      3. productId = 100007
+3. เลือกดูสินค้าชิ้นที่ 2 
+   1. http://localhost:8080/productbypid/100005
